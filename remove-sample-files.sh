@@ -1,0 +1,1 @@
+rm example-id/id.issued.json example-id/id.proof.json issuer/*.pem verifier/*.pem
