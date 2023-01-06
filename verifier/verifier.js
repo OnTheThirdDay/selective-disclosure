@@ -1,7 +1,7 @@
 const fs = require('fs');
 const crypto = require('crypto');
 
-const { verify_proof } = require('../shared-lib');
+const { verify_tree, verify_proof } = require('../shared-lib');
 
 const args = process.argv.slice(2);
 
@@ -20,6 +20,15 @@ if (verification_sig) {
     console.log("--- Signature is verified. ---");
 } else {
     console.log("--- Signature is INVALID! ---");
+    return;
+}
+
+const verification_tree = verify_tree(proof);
+
+if (verification_tree) {
+    console.log("--- Merkle Tree structure is verified. ---");
+} else {
+    console.log("--- Merkle Tree structure is INVALID! ---");
     return;
 }
 

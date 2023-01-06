@@ -120,6 +120,6 @@ module.exports = {
 
     verify_proof(proof, attribute, attribute_value, salt) {
         let hash = crypto.createHash('sha256').update(JSON.stringify({ [attribute]: attribute_value }) + salt).digest('base64');
-        return module.exports.search_attribute_hash(proof, hash) && module.exports.verify_tree(proof);
+        return module.exports.search_attribute_hash(proof, hash);
     }
 }
